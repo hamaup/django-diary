@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-am60h*30g2rx!p3av6y)258dv-1+2-ydjc4f@msrg4shk8urn('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -117,10 +117,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'  # ★ 静的ファイルへの URL パス (URL の先頭につく文字列)
-
-STATICFILES_DIRS = [ # ★ 静的ファイルを探すディレクトリのリスト
-    BASE_DIR / 'static', # プロジェクト全体の静的ファイル用ディレクトリ (今は空でOK)
-]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles' # ★ collectstatic コマンドの出力先ディレクトリ
 
