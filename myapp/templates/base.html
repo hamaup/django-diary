@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> {# ★ viewport 設定を追加 #}
+  <title>{% block title %}日記アプリ{% endblock %}</title>
+  {% load static %} {# ★ 静的ファイル用のテンプレートタグをロード #}
+  <link rel="stylesheet" href="{% static 'myapp/style.css' %}"> {# ★ CSS ファイルを読み込み #}
+</head>
+
+<body>
+  <header> {# ★ ヘッダー要素を追加 #}
+    <nav>
+      {% if user.is_authenticated %}
+      <p>ログイン中: {{ user.username }}</p>
+      <form id="logout-form" action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">ログアウト</button>
+      </form>
+
+      <a href="{% url 'password_change' %}">パスワード変更</a>
+      {% else %}
+      <a href="{% url 'login' %}">ログイン</a>
+      <a href="{% url 'user_create' %}">ユーザー登録はこちら</a>
+      <a href="{% url 'password_reset' %}">パスワードを忘れた場合</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main> {# ★ メインコンテンツを main 要素で囲む #}
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer> {# ★ フッター要素を追加 #}
+    <p>&copy; 2025 My Diary App</p> {# ★ フッターの著作権表示を追加 #}
+  </footer>
+</body>
+
+</html>

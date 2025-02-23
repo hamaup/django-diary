@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}日記一覧{% endblock %}
+
+{% block content %}
+<h1>日記一覧</h1>
+<a href="{% url 'diary_create' %}">新規作成する</a>
+{# 検索フォームを追加 #}
+<form method="get" action="{% url 'diary_list' %}">
+  <input type="text" name="search_query" placeholder="日記を検索...">
+  <button type="submit">検索</button>
+</form>
+
+<ul>
+  {% for diary in diaries %}
+  <li>
+    <h2><a href="{% url 'diary_detail' diary.id %}">{{ diary.title }}</a></h2>
+    <p>作成日時：{{ diary.created_at|date:"Y年m月d日 H時i分" }}</p>
+    <p>{{ diary.content }}</p>
+  </li>
+  {% empty %}
+  <li>まだ日記はありません。</li>
+  {% endfor %}
+</ul>
+{% endblock %}

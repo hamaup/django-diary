@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}日記作成{% endblock %}
+
+{% block content %}
+<h1>日記作成</h1>
+<form method="POST"> {# ★ method="POST" を指定 #}
+  {% csrf_token %} {# ★ CSRF トークン #}
+  <div>
+    {{ form.title.label_tag }}
+    {{ form.title }}
+    {{ form.title.errors }}
+  </div>
+  <div>
+    {{ form.content.label_tag }}
+    {{ form.content }}
+    {{ form.content.errors }}
+  </div>
+  {# カテゴリ選択フィールドを追加 #}
+  <div>
+    {{ form.category.label_tag }}
+    {{ form.category }}
+    {{ form.category.errors }}
+  </div>
+  <button type="submit">保存</button> {# ★ 保存ボタン #}
+</form>
+<a href="{% url 'diary_list' %}">日記一覧に戻る</a>
+{% endblock %}

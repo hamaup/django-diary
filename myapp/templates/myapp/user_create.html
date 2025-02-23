@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}ユーザー登録{% endblock %}
+
+{% block content %}
+<h1>ユーザー登録</h1>
+<form method="post">
+  {% csrf_token %}
+  <div>
+    {{ form.username.label_tag }}
+    {{ form.username }}
+    {{ form.username.errors }}
+  </div>
+  <div>
+    {{ form.email.label_tag }}
+    {{ form.email }}
+    {{ form.email.errors }}
+  </div>
+  <div>
+    {{ form.password1.label_tag }}
+    {{ form.password1 }}
+    {{ form.password1.errors }}
+  </div>
+  <div>
+    {{ form.password2.label_tag }}
+    {{ form.password2 }}
+    {{ form.password2.errors }}
+  </div>
+  <button type="submit">登録</button>
+</form>
+<a href="{% url 'diary_list' %}">日記一覧に戻る</a>
+{% endblock %}

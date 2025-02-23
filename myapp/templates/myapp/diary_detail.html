@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ diary.title }} - 日記詳細{% endblock %}
+
+{% block content %}
+<div class="diary-detail">
+  <h1>{{ diary.title }}</h1>
+  <p class="created-at">作成日時：{{ diary.created_at|date:"Y年m月d日 H時i分" }}</p>
+  <p class="content">{{ diary.content }}</p>
+  <a href="{% url 'diary_edit' diary.id %}">編集する</a>
+  <a href="{% url 'diary_delete' diary.id %}">削除する</a> {# ★ 削除ページへのリンクを追加 #}
+</div>
+<a href="{% url 'diary_list' %}">日記一覧に戻る</a>
+{% endblock %}

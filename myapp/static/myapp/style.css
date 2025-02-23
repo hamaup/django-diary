@@ -1,0 +1,340 @@
+/* ----------------------------------
+   リセット & 基本設定
+---------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 20px;
+}
+
+/* ----------------------------------
+   ヘッダー
+---------------------------------- */
+header {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 15px;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+header nav p {
+  margin: 0;
+}
+
+#logout-form {
+  display: inline-block;
+  margin: 0;
+}
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+header nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#logout-form button {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#logout-form button:hover {
+  background-color: #fff;
+  color: #4a90e2;
+}
+
+/* ----------------------------------
+   メインコンテンツ
+---------------------------------- */
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------------------------
+   フォーム全般
+---------------------------------- */
+form {
+  margin-top: 20px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* ----------------------------------
+   ボタン（共通）
+---------------------------------- */
+button {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 15px 0px;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+/* ----------------------------------
+   ダイアリー詳細 & 削除確認ページ
+---------------------------------- */
+.diary-detail {
+  margin-top: 20px;
+}
+
+.diary-detail h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.diary-detail p.created-at {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 15px;
+}
+
+.diary-detail p.content {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+/* 削除確認専用 */
+.diary-delete-confirm {
+  padding: 30px;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.diary-delete-confirm h1 {
+  color: #e74c3c;
+  margin-bottom: 30px;
+}
+
+.diary-delete-confirm p {
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+.diary-delete-confirm .btn-delete {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.diary-delete-confirm .btn-delete:hover {
+  background-color: #c0392b;
+}
+
+/* ----------------------------------
+   日記一覧ページ
+---------------------------------- */
+/* 見出し */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* 「新規作成する」ボタン */
+a[href*="diary_create"] {
+  display: inline-block;
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-bottom: 16px;
+  transition: background-color 0.3s;
+}
+
+a[href*="diary_create"]:hover {
+  background-color: #357abd;
+}
+
+/* 検索フォーム */
+form[method="get"] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+form[method="get"] input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+form[method="get"] button[type="submit"] {
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+form[method="get"] button[type="submit"]:hover {
+  background-color: #357abd;
+}
+
+/* 日記一覧（リスト） */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+li h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+li h2 a {
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+li h2 a:hover {
+  color: #357abd;
+  text-decoration: underline;
+}
+
+li p {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+li p:last-of-type {
+  margin-bottom: 0;
+}
+
+li:empty,
+li.no-diary {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+/* ----------------------------------
+   リンクの共通スタイル
+---------------------------------- */
+a {
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #357abd;
+}
+
+/* ----------------------------------
+   フッター
+---------------------------------- */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #4a90e2;
+  color: white;
+  margin-top: 20px;
+}
+
+/* ----------------------------------
+   レスポンシブ対応
+---------------------------------- */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  main {
+    margin: 15px auto;
+    padding: 15px;
+  }
+}

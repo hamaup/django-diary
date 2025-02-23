@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}日記削除確認{% endblock %}
+
+{% block content %}
+<div class="diary-delete-confirm">
+  <h1>日記削除確認</h1> {# ★ 見出し #}
+  <p>本当に日記を削除してもよろしいですか？</p>
+  <p>タイトル: {{ diary.title }}</p>
+  <form method="POST">
+    {% csrf_token %} {# ★ CSRF トークン #}
+    <button type="submit" class="btn-delete">削除する</button>
+    <a href="{% url 'diary_detail' diary.id %}">キャンセル</a>
+  </form>
+</div>
+{% endblock %}

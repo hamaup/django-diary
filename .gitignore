@@ -1,0 +1,9 @@
+venv/
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+staticfiles/
+mediafiles/
+*.secrets
+.DS_Store
