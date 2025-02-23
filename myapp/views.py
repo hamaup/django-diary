@@ -6,6 +6,18 @@ from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q # ★ Qオブジェクトをインポート
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import DiarySerializer
+
+class DiaryListAPIView(APIView): # APIView を継承した API ビュー
+    def get(self, request, *args, **kwargs): # GET リクエスト処理
+        diaries = Diary.objects.all() # 全ての日記データを取得
+        serializer = DiarySerializer(diaries, many=True) # 複数データ (many=True) をシリアライズ
+        return Response(serializer.data, status=status.HTTP_200_OK) # シリアライズしたデータを JSON レスポンスとして返す
+
+
 def diary_list(request):
     diaries = Diary.objects.all().order_by('-created_at')
     search_query = request.GET.get('search_query') # ★ 検索キーワードを取得
