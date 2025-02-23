@@ -22,5 +22,9 @@ jobs: # ジョブ (実行される処理のまとまり) を定義
         python -m pip install --upgrade pip
         pip install -r requirements.txt # requirements.txt に記述されたパッケージをインストール
 
+    - name: Run migrations
+      run: python manage.py migrate
+      # テスト実行前にマイグレーションを実施
+
     - name: Run tests # テストを実行
       run: python manage.py test # python manage.py test コマンドを実行
